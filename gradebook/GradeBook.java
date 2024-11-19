@@ -1,12 +1,26 @@
 import java.util.Scanner;
+import java.io.*;
 
-public class GradeBook {
+public class GradeBook 
+{
     private static Student[] students;
 
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-
+    public static void main(String[] args) 
+    throws FileNotFoundException{
+        Scanner input = new Scanner(new File("grades.txt"));
+        int count=0;
+        students = new Student[100];
         // TODO: initialize students from contents of grades.txt file
+         while(input.hasNext()){
+            
+            String data = input.nextLine();
+            String[] temp = data.split(",");
+            students= new Student[100];
+            students[count].setLastName(temp[0]);
+            students[count].setFirstName(temp[1]);
+            students[count].setGrade(Double.parseDouble(temp[2]));
+            count++;
+        }
 
         System.out.println("Welcome to the CM111 Grade Book App!");
 
