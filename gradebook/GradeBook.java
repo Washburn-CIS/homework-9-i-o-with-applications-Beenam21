@@ -8,20 +8,22 @@ public class GradeBook
     public static void main(String[] args) 
     throws FileNotFoundException{
         Scanner input = new Scanner(new File("grades.txt"));
-        int count=0;
+       
         students = new Student[100];
         // TODO: initialize students from contents of grades.txt file
-         while(input.hasNext()){
+        
+       
+            String[] temp= input.nextLine().split(",");
+            for(int i=0;i<temp.length;i++)
+          {  
             
-            String data = input.nextLine();
-            String[] temp = data.split(",");
-            students= new Student[100];
-            students[count].setLastName(temp[0]);
-            students[count].setFirstName(temp[1]);
-            students[count].setGrade(Double.parseDouble(temp[2]));
-            count++;
-        }
-
+            students[i]= new Student();
+            students[i].setLastName(temp[0]);
+            students[i].setFirstName(temp[1]);
+            students[i].setGrade(Double.parseDouble(temp[2]));
+          } 
+        
+        
         System.out.println("Welcome to the CM111 Grade Book App!");
 
         while(true) {
